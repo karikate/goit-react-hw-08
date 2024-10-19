@@ -1,0 +1,7 @@
+.wrapper {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+  padding: 0;
+}
