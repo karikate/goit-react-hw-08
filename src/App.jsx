@@ -1,27 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import ContactForm from "./components/ContactForm/ContactForm";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import { useEffect } from "react";
-import { fetchContactsThunk } from "./redux/contacts/operations";
-import { selectIsError, selectIsLoading } from "./redux/contacts/selectors";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import Contacts from "./pages/Contacts";
+
+import Singup from "./pages/Singup";
+import Login from "./pages/Login";
+import Layout from "./components/Layout";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContactsThunk());
-  }, [dispatch]);
-  const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
-
   return (
     <>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {isLoading && <h2>Loading...</h2>}
-      {isError && <h2>Error...</h2>}
-      <ContactList />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="signup" element={<Singup />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
