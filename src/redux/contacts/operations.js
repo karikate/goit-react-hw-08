@@ -1,12 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { goitApi } from "../auth/operaions";
+import { goitApi } from "../auth/operations";
 
 export const fetchContactsThunk = createAsyncThunk(
   `fetchAll`,
   async (_, thunkApi) => {
     try {
       const { data } = await goitApi.get(`/contacts`);
-      // setAuthHeader(data.token);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

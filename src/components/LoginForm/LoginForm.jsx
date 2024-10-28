@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import s from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/auth/operaions";
+import { login } from "../../redux/auth/operations";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 

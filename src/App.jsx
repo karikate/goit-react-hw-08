@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { refreshUser } from "./redux/auth/operaions";
+import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { PrivatRoute } from "./components/PrivatRoute";
 import { RestrictedRoute } from "./components/RestrictedRoute";
@@ -33,22 +33,26 @@ function App() {
               <PrivatRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
+          <Route
+            path="signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationPage />}
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
         </Route>
-        <Route
-          path="signup"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegistrationPage />}
-            />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
