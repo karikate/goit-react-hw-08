@@ -1,9 +1,10 @@
 import { Field, Form, Formik } from "formik";
-import s from "./SingupForm.module.css";
+import s from "./RegisterForm.module.css";
 import { useDispatch } from "react-redux";
-import { signup } from "../../redux/auth/operaions";
+import { register } from "../../redux/auth/operaions";
+import { Link } from "react-router-dom";
 
-const SingupForm = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
@@ -11,7 +12,7 @@ const SingupForm = () => {
     password: "",
   };
   const handleSubmit = (values, options) => {
-    dispatch(signup(values));
+    dispatch(register(values));
 
     options.resetForm();
   };
@@ -33,10 +34,14 @@ const SingupForm = () => {
           </label>
 
           <button type="submit">Sing up</button>
+
+          <Link to={"/login"}>
+            <p>Log in</p>
+          </Link>
         </Form>
       </Formik>
     </div>
   );
 };
 
-export default SingupForm;
+export default RegisterForm;

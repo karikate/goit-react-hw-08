@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { selectIsError, selectIsLoading } from "../redux/contacts/selectors";
 import { fetchContactsThunk } from "../redux/contacts/operations";
 
-const Contacts = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContactsThunk());
@@ -25,4 +25,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsPage;

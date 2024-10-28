@@ -1,25 +1,3 @@
-.wrapper {
-  display: flex;
-
-  padding: 20px;
-  color: rgba(10, 28, 127, 0.807);
-  font-weight: 700;
-  background-color: rgba(255, 255, 255, 0.4);
-
-  box-shadow: 3;
-  box-shadow: 0 0 20px 4px rgb(6, 41, 74);
-  margin-bottom: 20px;
-  justify-content: space-between;
-}
-.wrapperNav {
-  display: flex;
-  gap: 20px;
-}
-
-.wrapperReg {
-  display: flex;
-  gap: 20px;
-}
 .link {
   color: rgb(120, 18, 52);
   font-weight: bold;
@@ -27,4 +5,9 @@
 
 .activeLink {
   color: black;
+}
+
+.wrapperNav {
+  display: flex;
+  gap: 20px;
 }

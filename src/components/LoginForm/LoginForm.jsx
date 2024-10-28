@@ -2,6 +2,8 @@ import { Field, Form, Formik } from "formik";
 import s from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operaions";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -10,7 +12,15 @@ const LoginForm = () => {
     password: "",
   };
   const handleSubmit = (values, options) => {
-    dispatch(login(values));
+    dispatch(login(values))
+      .unwrap()
+      .then((res) => {
+        toast(`Welcome, ${res.user.name}`);
+      })
+      .catch(() => {
+        toast(`Invalid credential`);
+      });
+
     options.resetForm();
   };
   return (
@@ -23,10 +33,14 @@ const LoginForm = () => {
           </label>
           <label className={s.label}>
             <p className={s.name}>Password</p>
-            <Field name="password" className={s.input}></Field>
+            <Field name="password" type="password" className={s.input}></Field>
           </label>
 
           <button type="submit">Log in</button>
+
+          <Link to={"/signup"}>
+            <p>Sign up</p>
+          </Link>
         </Form>
       </Formik>
     </div>

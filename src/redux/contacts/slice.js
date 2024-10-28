@@ -43,6 +43,7 @@ const contactSlice = createSlice({
         ),
         (state) => {
           state.loading = false;
+          state.error = false;
         }
       )
       .addMatcher(
