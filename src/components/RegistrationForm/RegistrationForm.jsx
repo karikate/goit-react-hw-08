@@ -1,10 +1,10 @@
 import { Field, Form, Formik } from "formik";
-import s from "./RegisterForm.module.css";
+import s from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { Link } from "react-router-dom";
 
-const RegisterForm = () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
     name: "",
@@ -30,7 +30,7 @@ const RegisterForm = () => {
           </label>
           <label className={s.label}>
             <p className={s.name}>Password</p>
-            <Field name="password" className={s.input}></Field>
+            <Field name="password" type="password" className={s.input}></Field>
           </label>
 
           <button type="submit">Sing up</button>
@@ -44,4 +44,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RegistrationForm;
